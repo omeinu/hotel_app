@@ -1,0 +1,17 @@
+<div class="top_wrapper">
+  <div class="content_width">
+    <div class="top_main">
+        <ul class="top_search_container">
+          <li class="top_message">
+            <p>ヒロヒロボンゴでまだ体験<br>したことのない旅をしよう</p>
+          </li>
+          <li class="top_area_search">
+            <p>エリア</p>
+            <%= search_form_for @search, url: rooms_path do |f| %>
+              <%= f.text_field :address_cont, placeholder: '場所', class: "room_search_form" %>
+              <%= f.submit ("探す"), class: "room_search_btn" %>
+            <% end %>
+        </ul>
+    </div>
+  </div>
+</div>

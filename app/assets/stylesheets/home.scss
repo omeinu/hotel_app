@@ -1,0 +1,52 @@
+/*=======================================
+             山の景色の部分
+=======================================*/
+.top_wrapper{
+    padding-top: 70px;
+    height: 600px;
+    background-image: url("/assets/img_cover_top.jpg");
+    background-size: cover;
+}
+.top_search_container{
+    padding: 24px;
+    background-color: white;
+    height: 200px;
+    width: 400px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    position: absolute;
+    top: 150px;
+    left: 90px;
+}
+.top_search_container li{
+    width: 100%;
+}
+.top_message{
+    font-weight: normal;
+    font-size: 32px;
+    margin: -40px 0;
+}
+.top_area_search p{
+    font-size: 12px;
+    margin-bottom: -1px;
+}
+.room_search_form{
+    width: 98%;
+    height: 30px;
+    border: 1px solid #4a90e2;
+    border-radius: 8px;
+    font-size: 16px;
+    padding-left: 10px;
+}
+.room_search_btn{
+    width: calc(100% + 8px);
+    height: 34px;
+    color: white;
+    background-color: #4a90e2;
+    border: none;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-size: 16px;
+}

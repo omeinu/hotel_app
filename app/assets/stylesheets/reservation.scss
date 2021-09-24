@@ -1,0 +1,25 @@
+.reservation_wrapper{
+    padding-top: 120px;
+}
+.reservation_wrapper p{
+    padding-left: 120px;
+    font-size: 28px;
+}
+.reservation_wrapper table{
+    padding: 0 20px;
+    margin: 40px auto;
+}
+.reservation_wrapper th{
+    width: 18%;
+    padding: 20px 0;
+    border-top: 2px solid #eaedef;
+}
+.reservation_wrapper td{
+    padding: 10px 0;
+    border-top: 2px solid #eaedef;
+}
+.reservation_image img{
+    width: 200px;
+    object-fit: cover
+}
+

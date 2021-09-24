@@ -1,0 +1,22 @@
+<div class="wrapper_shadow">
+  <div class="flash"><%= render "shared/error", obj: @user %></div>
+    <div class="container_shadow">
+      <%= form_for @user do |f| %>
+          <h4>新しいアカウントを作成</h4>
+          <div class="user_new_form">
+            <span>必須</span>
+            <%= f.text_field :name, placeholder: "ユーザー名" %>
+          </div>
+        <div class="user_new_form">
+          <span>必須</span>
+          <%= f.text_field :email, placeholder: "メールアドレス" %>
+        </div>
+          <div class="user_new_form">
+              <span>必須</span>
+              <%= f.text_field :password, placeholder: "パスワード" %>
+            </div>
+          <%= f.submit "新しいアカウントを作成", class: "user_new_btn" %>
+          <p>すでにアカウントをお持ちの方はログイン</p>
+      <% end %>
+    </div>
+</div>
