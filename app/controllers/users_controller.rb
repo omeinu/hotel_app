@@ -4,17 +4,16 @@ class UsersController < ApplicationController
   before_action :forbid_login_user, {only: [:new, :login_form, :login, :create]}
   before_action :ensure_correct_user, {only: [:edit]}
   
-  
-
   def new
     @user = User.new
   end
   
   def login_form
+    @user = User.new
   end
   
   def login
-    @user = User.find_by(email: params[:email], password: params[:password])
+    @user = User.find_by(user_login_params)
     if @user
       flash[:notice] = "ログインしました"
       session[:user_id] = @user.id
@@ -60,25 +59,28 @@ class UsersController < ApplicationController
   end
   
   def create
-      @user = User.new(user_create_params)
-      if @user.save
-        flash[:notice] = "ユーザーを新規登録しました"
-        session[:user_id] = @user.id
-        redirect_to("/")
-      else
-        render "new"
-      end
+    @user = User.new(user_create_params)
+    if @user.save
+      flash[:notice] = "ユーザーを新規登録しました"
+      session[:user_id] = @user.id
+      redirect_to("/")
+    else
+      render "new"
+    end
   end
   
   private
   
     def user_create_params
-       params.require(:user).permit(:name, :email, :password) 
+      params.require(:user).permit(:name, :email, :password) 
     end
     
     def user_update_params
-       params.require(:user).permit(:name, :email, :password, :introduction, :image) 
+      params.require(:user).permit(:name, :email, :password, :introduction, :image) 
     end
-  
-  
+    
+    def user_login_params
+      params.require(:user).permit(:email, :password)
+    end
+
 end

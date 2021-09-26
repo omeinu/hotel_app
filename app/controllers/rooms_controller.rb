@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
  
- before_action :set_search
- before_action :authenticate_user, {only: [:new, :create]}
+  before_action :set_search
+  before_action :authenticate_user, {only: [:new, :create]}
  
   def index
     @rooms = Room.all
@@ -22,20 +22,20 @@ class RoomsController < ApplicationController
   end
   
   def create
-      @room = Room.new(room_params)
-      @room.user_id = @current_user.id
-      if @room.save
-        redirect_to(rooms_path)
-        flash[:notice] = "部屋を新規登録しました"
-      else
-        render "rooms/new"
-      end
+    @room = Room.new(room_params)
+    @room.user_id = @current_user.id
+    if @room.save
+      redirect_to(rooms_path)
+      flash[:notice] = "部屋を新規登録しました"
+    else
+      render "rooms/new"
+    end
   end
-
+  
   private
   
     def room_params
-       params.require(:room).permit(:name, :introduction, :address, :price, :image) 
+      params.require(:room).permit(:name, :introduction, :address, :price, :image) 
     end
-  
+
 end

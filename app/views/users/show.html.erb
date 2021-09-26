@@ -1,36 +1,32 @@
 <div class="user_show">
-    <div class="flash"><%= render "shared/error", obj: @user %></div>
-      <div class="user_wrapper">
-        <div class="user_content">
-          <div class="user_information">
-            <% if @user.image? %>
-              <%= image_tag @user.image.url %>
-            <% else %>
-              <%= image_tag "/assets/default_user.jpg" %>
-            <% end %>
-            <div class="user_information">
-                <h2>名前</h2>
-                <p><%= @user.name %></p>
-            </div>
-            <div class="user_information">
-                <h2>メールアドレス</h2>
-                <p><%= @user.email %></p>
-            </div>
-            <% if @user.introduction %>
-              <div class="user_information">
-                  <h2>自己紹介</h2>
-                  <p><%= @user.introduction %></p>
-              </div>
-            <% end %>
-          </div>
-          <% if @current_user.id == @user.id %>
-            <p class="user_show_link">
-              <%= link_to("登録部屋","/register") %>
-              <%= link_to("予約確認",reservations_path) %>
-              <%= link_to("編集する",edit_user_path) %>
-              <%= link_to("ログアウト","/logout", {method: "post"}) %>
-            </p>
-          <% end %>
+  <div class="flash"><%= render "shared/error", obj: @user %></div>
+  <div class="user_wrapper">
+    <div class="user_content">
+      <div class="user_information">
+        <%= user_display(@user) %>
+        <div class="user_information">
+          <h2>名前</h2>
+          <p><%= @user.name %></p>
         </div>
+        <div class="user_information">
+          <h2>メールアドレス</h2>
+          <p><%= @user.email %></p>
+        </div>
+        <% if @user.introduction %>
+          <div class="user_information">
+            <h2>自己紹介</h2>
+            <p><%= @user.introduction %></p>
+          </div>
+        <% end %>
       </div>
+      <% if @current_user.id == @user.id %>
+        <p class="user_show_link">
+          <%= link_to("登録部屋","/register") %>
+          <%= link_to("予約確認",reservations_path) %>
+          <%= link_to("編集する",edit_user_path) %>
+          <%= link_to("ログアウト","/logout", {method: "post"}) %>
+        </p>
+      <% end %>
+    </div>
+  </div>
 </div>

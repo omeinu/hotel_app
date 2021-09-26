@@ -1,33 +1,33 @@
 <div class="user_edit">
-    <div class="flash"><%= render "shared/error", obj: @user %></div>
-    <div class="user_wrapper">
-        <div class="user_content">
-            <%= form_for @user do |f| %>
-              <h2>アカウント編集</h2>
-              <div class="user_edit_form">
-                <p><%= f.label :name, "名前" %><span>必須</span></p>
-                <%= f.text_field :name %>
-              </div>
-              <div class="user_edit_form">
-                <p><%= f.label :email, "メールアドレス" %><span>必須</span></p>
-                <%= f.text_field :email %>
-              </div>
-              <div class="user_edit_form">
-                <p><%= f.label :password, "パスワード" %><span>必須</span></p>
-                <%= f.text_field :password %>
-              </div>
-              <div class="user_edit_form user_edit_introduction">
-                <p><%= f.label :introduction, "自己紹介" %></p>
-                <%= f.text_field :introduction %>
-              </div>
-              <div class="user_edit_form user_edit_image">
-                <p><%= f.label :image, "アイコン画像" %></p>
-                <%= f.file_field :image %>
-              </div>
-              <div class="user_edit_form user_edit_btn">
-                  <%= f.submit "編集を確定する" %>
-              </div>
-            <% end %>
+  <div class="flash"><%= render "shared/error", obj: @user %></div>
+  <div class="user_wrapper">
+    <div class="user_content">
+      <%= form_with model: @user,url: user_path, method: :patch do |f| %>
+        <h2>アカウント編集</h2>
+        <div class="user_edit_form">
+          <p><%= f.label :name, "名前" %><span>必須</span></p>
+          <%= f.text_field :name %>
         </div>
+        <div class="user_edit_form">
+          <p><%= f.label :email, "メールアドレス" %><span>必須</span></p>
+          <%= f.text_field :email %>
+        </div>
+        <div class="user_edit_form">
+          <p><%= f.label :password, "パスワード" %><span>必須</span></p>
+          <%= f.text_field :password %>
+        </div>
+        <div class="user_edit_form user_edit_introduction">
+          <p><%= f.label :introduction, "自己紹介" %></p>
+          <%= f.text_field :introduction %>
+        </div>
+        <div class="user_edit_form user_edit_image">
+          <p><%= f.label :image, "アイコン画像" %></p>
+          <%= f.file_field :image %>
+        </div>
+        <div class="user_edit_form user_edit_btn">
+            <%= f.submit "編集を確定する" %>
+        </div>
+      <% end %>
     </div>
+  </div>
 </div>

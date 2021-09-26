@@ -8,11 +8,7 @@
         <div class="room_search_list-wrapper">
           <%= link_to(room_path(room), class: "room_link") do %>
             <div class="room_image">
-              <% if room.image? %>
-                <%= image_tag room.image.url %>
-              <% else %>
-                <%= image_tag "/assets/default.jpg" %>
-              <% end %>
+              <%= room_display(room) %>
             </div>
             <div class="room_information">
               <h2>
