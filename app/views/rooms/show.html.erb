@@ -1,0 +1,51 @@
+<div class="room_show">
+  <div class="flash">
+    <%= render "shared/error", obj: @reservation %>
+  </div>
+  <div class="room_wrapper">
+    <div class="room_show_left">
+      <div class="room_show_navi">
+        <div class="room_show_image">
+          <%= room_display(@room) %>
+        </div>
+          <%= link_to("/users/#{@room.user_id}") do %>
+            <div class="room_show_navi_user">
+              <%= user_display(@user) %>
+            </div>
+          <% end %>
+        <div class="room_show_navi_name">
+            <p><%= @room.name %></p>
+        </div>
+        <div class="room_show_navi_address">
+            <p><%= @room.address %></p>
+        </div>
+        <div class="room_show_introduction">
+            <p><%= @room.introduction %></p>
+        </div>
+      </div>
+    </div>
+    <%= form_with model: @reservation, url: reservations_path, local: true, method: :post do |f| %>
+      <div class="room_show_right">
+        <div class="room_show_right_price">
+          <p><%= @room.price %>　日  /  ¥</p>
+        </div>
+        <div class="room_show_right_form">
+          <p><%= f.label :start_date, "開始日" %></p>
+          <%= f.date_field :start_date %>
+        </div>
+        <div class="room_show_right_form">
+          <p><%= f.label :end_date, "終了日" %></p>
+          <%= f.date_field :end_date %> 
+        </div>
+        <div class="room_show_right_form">
+          <p><%= f.label :people, "人数" %></p>
+          <%= f.number_field :people, min: "0" %>
+        </div>
+        <div class="room_show_right_btn">
+          <%= f.hidden_field :room_id, :value => "#{@room.id}" %>
+          <%= f.submit %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

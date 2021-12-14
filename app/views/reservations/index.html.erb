@@ -1,0 +1,30 @@
+<div class="reservation_wrapper">
+  <p>予約件数: <%= @reservations.count %>件</p>
+    <table>
+      <thead>
+        <tr align="center">
+          <th>ルーム画像</th>
+          <th>ルーム名</th>
+          <th>合計料金</th>
+          <th>開始日</th>
+          <th>終了日</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @reservations.each do |reservation| %>
+          <% room = Room.find_by(id: reservation.room_id) %>
+          <tr align="center">
+            <td class="reservation_image">
+              <%= link_to("/rooms/#{room.id}") do %>
+                <%= room_display(room) %>
+              <% end %>
+            </td>
+            <td class="reservation_room_name"><%= room.name %></td>
+            <td class="reservation_price"><%= room.price * reservation.people * (reservation.end_date - reservation.start_date).to_i %> 円</td>
+            <td class="reservation_start_date"><%= reservation.start_date %></td>
+            <td class="reservation_end_date"><%= reservation.end_date %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  

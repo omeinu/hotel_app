@@ -8,8 +8,51 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+    <header>
+      <div class="header_wrapper content_width">
+        <div class="header_left">
+          <div class="header_left_logo">
+            <%= link_to("/") do %>
+              <img class="home" src="/assets/logo.png">
+            <% end %>
+          </div>
+          <div class="header_left_search">
+            <%= search_form_for @search, url: rooms_path do |f| %>
+              <%= f.text_field :address_cont, placeholder: '場所', class: "header_search_form" %>
+              <%= f.text_field :name_or_introduction_cont_any, placeholder: 'キーワード', class: "header_search_form" %>
+              <%= f.submit ("検索する"), class: "header_search_btn" %>
+            <% end %>
+          </div>
+        </div>
+        <ul class="header_right">
+          <% if @current_user %>
+            <li>
+              <%= link_to(@current_user.name, "/users/#{@current_user.id}") %>
+            </li>
+            <li>
+              <p><%= link_to("部屋登録", new_room_path) %></p>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to("ログイン", "/login") %>
+            </li>
+            <li>
+              <p><%= link_to("アカウント作成", new_user_path) %></p>
+            </li>
+          <% end %>
+        </li>
+      </div>
+    </header>
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
     <%= yield %>
+    <footer>
+      <div class="footer_wrapper content_width"></div>
+      <p>ヒロヒロボンゴ</p>
+    </footer>
   </body>
 </html>

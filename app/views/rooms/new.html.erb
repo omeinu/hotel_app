@@ -1,0 +1,55 @@
+<div class="room_new">
+    <div class="flash"><%= render "shared/error", obj: @room %></div>
+    <div class="room_new_wrapper content_width">
+        <%= form_with model: @room, url: rooms_path, local: true, method: :post do |f| %>
+            <div class="room_new_content">
+              <h2>ルーム情報登録</h2>
+            </div>
+            <div class="room_new_content">
+              <div class="room_new_content_update">
+                <h3><%= f.label :name, "ルーム名" %><span>必須</span></h3>
+                <div class="room_new_form room_new_name">
+                    <%= f.text_field :name, placeholder: "ルーム名を入力" %>
+                </div>
+              </div>
+            </div>
+            <div class="room_new_content">
+              <div class="room_new_content_update">
+                <h3><%= f.label :introduction, "ルーム紹介" %><span>必須</span></h3>
+                <div class="room_new_form room_new_introduction">
+                    <%= f.text_field :introduction, placeholder: "ルーム説明を入力" %>
+                </div>
+              </div>
+            </div>
+            <div class="room_new_content">
+              <div class="room_new_content_update">
+                <h3><%= f.label :price, "料金" %><span>必須</span></h3>
+                <div class="room_new_form room_new_price">
+                    <%= f.text_field :price, placeholder: "１日あたりの料金を入力" %>
+                </div>
+              </div>
+            </div>
+            <div class="room_new_content">
+              <div class="room_new_content_update">
+                <h3><%= f.label :address, "住所" %><span>必須</span></h3>
+                <div class="room_new_form room_new_address">
+                    <%= f.text_field :address, placeholder: "住所を入力" %>
+                </div>
+              </div>
+            </div>
+            <div class="room_new_content">
+              <div class="room_new_content_update">
+                <h3><%= f.label :image, "ルーム画像" %></h3>
+                <div class="room_new_form room_new_image">
+                    <%= f.file_field :image, placeholder: "ああああああああああ" %>
+                </div>
+              </div>
+            </div>
+            <div class="room_new_content">
+              <div class="room_new_content_update">
+                <%= f.submit "登録", class: "room_new_btn" %>
+              </div>
+            </div>
+        <% end %>
+    </div>
+</div>
